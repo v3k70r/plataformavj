@@ -1,0 +1,52 @@
+html,
+body {
+    font-family: 'proxima-nova-light', sans-serif;
+    font-size: 100%;
+    background-color: #FFFFFF;
+    height: 100%;
+
+}
+.navbar{
+    border-radius: 0px;
+    margin-bottom: 0px;
+    background-color: #0938ac;
+
+    }
+
+
+#wrap {
+    min-height: 100%;
+    height: auto;
+
+    margin: 0 auto -30px;
+
+    padding: 0 0 30px;
+}
+
+
+#footer {
+    height: 30px;
+    background-color: #0938ac;
+    text-align: center;
+    color: white;
+    margin-top: 2em;
+}
+
+#footer > .container {
+    padding-top: 2px;
+}
+
+
+*h4, h5, h6,
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+ul, ol {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+

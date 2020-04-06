@@ -1,0 +1,41 @@
+h5 {
+    font-size: 1em;
+    font-weight: bold;
+    color: #838B8B;
+    margin-top: 25px;
+}
+
+label, h2, th {
+    color: #838B8B;
+}
+
+td {
+    color: #E55923;
+}
+
+.btn-danger {
+    background-color: #E55923 !important;
+}
+
+.generic-table {
+    margin-top: 5px;
+    /* border&shadow */
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 8px 8px 8px #838B8B;
+    -webkit-box-shadow: 8px 8px 8px #838B8B;
+    box-shadow: 8px 8px 8px #838B8B;
+}
+
+.generic-table th {
+    background-color: #838B8B;
+    color: white;
+}
+
+.generic-table td:last-child {
+    text-align: center;
+}
+
+.generic-table th:last-child {
+    text-align: center;
+}

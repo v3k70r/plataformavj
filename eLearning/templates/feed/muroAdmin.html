@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+  <!-- Contact core css -->
+  <link href="{% static "css/forum.css" %}" rel="stylesheet"/>
+  <script src="{% static "js/tinymce/jquery.tinymce.min.js" %}"></script>
+  <script src="{% static "js/tinymce/tinymce.min.js" %}"></script>
+  <script>tinymce.init({
+    selector: 'textarea', resize: false
+  });
+  </script>
+  {% include 'breadcrumb.html' %}
+
+  <div class="container">
+    <div class = row>
+      <button class="btn btn-success add-btn">Nuevo anuncio</button>
+      <div class="col-md-6 add-topic">
+        <form method='POST' action="" role="form">
+          {% csrf_token %}
+          <a class="glyphicon glyphicon-arrow-left return-link"></a>
+          {{ add_new_anuncio_form | crispy }}
+          <button class="btn btn-danger btn-sm">Enviar</button>
+        </form>
+      </div>
+
+      <form class="form-inline forum-search" method='GET' action="" role="form">
+        <div class="form-group">
+          <input class="form-control" type="text" name="search" placeholder="Buscar temas"/>
+          <button class="btn btn-success btn-md">Buscar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      {% for instance in anuncio_list %}
+      <div class="col-md-4">
+        <!--Card-->
+        <div class="card">
+
+          <!--Card image-->
+          <div class="view overlay">
+            <img src="{{instance.imagen.url}}" class="img-fluid" alt="{{instance.slug}}">
+            <a>
+              <div class="mask rgba-white-slight waves-effect waves-light"></div>
+            </a>
+          </div>
+          <!--/.Card image-->
+
+          <!--Card content-->
+          <div class="card-body">
+            <!--Title-->
+            <center><h4 class="card-title"><strong>{{instance.titulo}}</strong></h4></center>
+            <hr>
+            <!--Text-->
+            <p class="card-text mb-3">
+              {{instance.texto}}
+            </p>
+            <p class="font-small font-weight-bold dark-grey-text mb-1"><i class="far fa-clock-o"></i>
+              {{instance.stamp_updated}}</p>
+            <p class="font-small grey-text mb-0">{{instance.author}}</p>
+            <p class="text-right mb-0 font-small font-weight-bold"><a href = "{% url 'muro' %}{{ instance.slug }}">Comentar <i class="fas fa-angle-right"></i></a></p>
+          </div>
+          <!--/.Card content-->
+        </div>
+    </div>
+      {% endfor %}
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if anuncio_list.has_previous %}
+          <a href="?page={{ anuncio_list.previous_page_number }}">Atrás</a>
+        {% endif %}
+
+      <span class="current">
+            Page {{ anuncio_list.number }} of {{ anuncio_list.paginator.num_pages }}.
+      </span>
+
+      {% if anuncio_list.has_next %}
+        <a class="" href="?page={{ anuncio_list.next_page_number }}">Siguiente</a>
+      {% endif %}
+    </span>
+    </div>
+  </div>
+  </div>
+  <script src="{% static "js/muro.js" %}" rel="script"></script>
+{% endblock %}
