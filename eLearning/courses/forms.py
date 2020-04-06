@@ -13,7 +13,7 @@ class AddCourseForm(forms.ModelForm):
 
         regexp = re.compile(r'[0-9a-zA-Z ]')
         if not regexp.match(course_name):
-            raise forms.ValidationError("El nombre del curso sólo debe contener (a-z, A-Z, 0-9, espacio).")
+            raise forms.ValidationError("El nombre del curso solo debe contener (a-z, A-Z, 0-9, espacio).")
 
         return course_name
 

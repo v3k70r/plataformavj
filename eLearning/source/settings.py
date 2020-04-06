@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reset_migrations',
     # My apps
     'users',
     'courses',
